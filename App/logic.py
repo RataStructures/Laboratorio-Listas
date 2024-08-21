@@ -27,6 +27,8 @@
 import csv
 import os
 
+# TODO Importar la librería para el manejo de listas
+
 data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
 
 """
