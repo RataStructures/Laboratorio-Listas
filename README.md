@@ -1,5 +1,5 @@
 <!-- SAMPLE LIST-->
-# Sample List
+# Laboratorio 3
 <!-- PROJECT SHIELDS -->
 [![Contributors][sample-list-contributors-shield]][sample-list-contributors-url]
 [![Forks][sample-list-forks-shield]][sample-list-forks-url]

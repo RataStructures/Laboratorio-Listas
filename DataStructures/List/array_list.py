@@ -274,7 +274,7 @@ def is_present(my_list, element, cmp_function):
                 break
         if keyexist:
             return keypos
-    return 0
+    return -1
 
 
 def change_info(my_list, pos, new_info):
@@ -341,10 +341,7 @@ def sub_list(my_list, pos, numelem):
         # raise error.FunctionNotImplemented("sublist()")
         sublst = {'elements': [],
                   'size': 0,
-                  'type': 'ARRAY_LIST',
-                  'key': my_list['key'],
-                  'datastructure': my_list['datastructure'],
-                  'cmpfunction': my_list['cmpfunction']}
+                  'type': 'ARRAY_LIST'}
         elem = pos-1
         cont = 1
         while cont <= numelem:
