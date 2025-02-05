@@ -35,8 +35,7 @@ def test_add_first():
     # Valida que el tamaño de la lista sea correcto
     lista = setup_tests()
 
-    lista["size"] = 3
-    lista["elements"] = [1, 2, 3]
+    lt.add_first(lista, 1)
 
     assert type(lista) == dict
     assert type(lista["size"]) == int
@@ -46,8 +45,7 @@ def test_add_first():
 def test_add_last():
     lista = setup_tests()
 
-    lista["size"] = 3
-    lista["elements"] = [1, 2, 3]
+    lt.add_last(lista, 1)
 
     assert type(lista) == dict
     assert type(lista["size"]) == int
