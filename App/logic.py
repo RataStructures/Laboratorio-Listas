@@ -35,6 +35,7 @@ data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/'
 El controlador se encarga de mediar entre la vista y el modelo.
 """
 
+
 def new_logic():
     """
     Inicializa el catálogo de libros. Crea una lista vacia para guardar
@@ -42,15 +43,17 @@ def new_logic():
     una lista vacia para los generos y una lista vacia para la asociación
     generos y libros. Retorna el catalogo inicializado.
     """
-    catalog = {'books': None,
-               'authors': None,
-               'tags': None,
-               'book_tags': None}
-    
+    catalog = {
+        'books': None,
+        'authors': None,
+        'tags': None,
+        'book_tags': None
+    }
+
     catalog['books'] = lt.new_list()
-    catalog['authors'] = # TODO Implemente la inicialización de la lista de autores
-    catalog['tags'] = # TODO Implemente la inicialización de la lista de tags
-    catalog['book_tags'] = # TODO Implemente la inicialización de la lista de asociación de libros y tags
+    # TODO Implemente la inicialización de la lista de autores
+    # TODO Implemente la inicialización de la lista de tags
+    # TODO Implemente la inicialización de la lista de asociación de libros y tags
     return catalog
 
 
@@ -65,16 +68,18 @@ def load_data(catalog):
     books, authors = load_books(catalog)
     # TODO Complete la carga de los tags
     # TODO Complete la carga de los book_tags
-    return books, authors, tags, booktags
+    # TODO Añada
+    return books, authors
+    # pass
 
 
 def load_books(catalog):
     """
-    Carga los libros del archivo.  Por cada libro se toman sus autores y por
+    Carga los libros del archivo. Por cada libro se toman sus autores y por
     cada uno de ellos, se crea en la lista de autores, a dicho autor y una
     referencia al libro que se esta procesando.
     """
-    booksfile = data_dir + 'GoodReads/books-small.csv'
+    booksfile = data_dir + 'GoodReads/books-medium.csv'
     input_file = csv.DictReader(open(booksfile, encoding='utf-8'))
     for book in input_file:
         add_book(catalog, book)
@@ -84,15 +89,25 @@ def load_books(catalog):
 def load_tags(catalog):
     """
     Carga todos los tags del archivo y los agrega a la lista de tags
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El número de tags cargados
     """
     # TODO Implementar la carga de los tags
+    pass
 
 
 def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El número de book_tags cargados
     """
     # TODO Implementar la carga de los book_tags
+    pass
 
 
 # Funciones de consulta sobre el catálogo
@@ -101,25 +116,37 @@ def get_books_by_author(catalog, author_name):
     """
     Retrona los libros de un autor
     """
-    pos_author = lt.is_present(catalog['authors'], author_name, compare_authors)
+    pos_author = lt.is_present(
+        catalog['authors'], author_name, compare_authors)
     if pos_author > 0:
         author = lt.get_element(catalog['authors'], pos_author)
         return author
     return None
 
 
-def get_best_books(catalog, number):
+def get_best_book(catalog):
     """
-    Retorna lista con los mejores libros
+    Busca el libro con el mejor rating. Retorna el último libro que se encontró
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El libro con el mejor rating
     """
-    # TODO Implementar la función de los mejores libros por rating
+    # TODO Implementar la función del mejor libro por rating
+    return None
 
 
 def count_books_by_tag(catalog, tag):
     """
-    Retorna los libros que fueron etiquetados con el tag
+    Retorna la número de libros que fueron etiquetados con el tag dado
+
+    :param catalog: El catalogo de estructuras del laboratorio
+    :param tag: El tag que se desea buscar
+
+    :return: El número de libros que fueron etiquetados con el tag dado
     """
     # TODO Implementar la función de conteo de libros por tag
+    pass
 
 
 # Funciones para agregar informacion al catalogo
@@ -202,24 +229,48 @@ def new_book_tag(tag_id, book_id):
     return book_tag
 
 
-
 def book_size(catalog):
     return lt.size(catalog['books'])
 
 
 def author_size(catalog):
+    """
+    Retorna el número de autores en el catálogo
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El número de autores en el catálogo
+    """
     # TODO Implementar la función de tamaño de autores
+    pass
 
 
 def tag_size(catalog):
+    """
+    Retorna el número de tags en el catálogo
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El número de tags en el catálogo
+    """
     # TODO Implementar la función de tamaño de tags
+    pass
 
 
 def book_tag_size(catalog):
+    """
+    Retorna el número de book_tags en el catálogo
+
+    :param catalog: El catalogo de estructuras del laboratorio
+
+    :return: El número de book_tags en el catálogo
+    """
     # TODO Implementar la función de tamaño de book_tags
+    pass
 
 
 # Funciones utilizadas para comparar elementos dentro de una lista
+
 
 def compare_authors(author_name1, author):
     if author_name1.lower() == author['name'].lower():

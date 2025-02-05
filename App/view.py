@@ -26,7 +26,7 @@
 
 import sys
 import App.logic as logic
-from DataStructures import List as lt
+from DataStructures.List import array_list as lt
 
 
 """
@@ -51,7 +51,7 @@ def print_menu():
     """
     print("Bienvenido")
     print("1- Cargar información en el catálogo")
-    print("2- Consultar los Top x libros por promedio")
+    print("2- Consultar el libro con mejor promedio")
     print("3- Consultar los libros de un autor")
     print("4- Libros por género")
     print("0- Salir")
@@ -81,17 +81,13 @@ def print_author_data(author):
         print('No se encontro el autor')
 
 
-def print_best_books(books):
+def print_best_book(book):
     """
-    Imprime los mejores libros solicitados
+    Imprime el mejor libro pasado por parametro
     """
-    size = lt.size(books)
-    if size:
-        print(' Estos son los mejores libros: ')
-        for book_pos in range(0, lt.size(books)):
-            book = lt.get_element(books, book_pos)
-            print('Titulo: ' + book['title'] + '  ISBN: ' +
-                  book['isbn'] + ' Rating: ' + book['average_rating'])
+    if book:
+        print('Titulo: ' + book['title'] + '  ISBN: ' +
+              book['isbn'] + ' Rating: ' + book['average_rating'])
     else:
         print('No se encontraron libros')
 
@@ -106,7 +102,7 @@ def main():
     Menu principal
     """
     working = True
-    #ciclo del menu
+    # ciclo del menu
     while working:
         print_menu()
         inputs = input('Seleccione una opción para continuar\n')
@@ -120,9 +116,8 @@ def main():
                   str(bktg))
 
         elif int(inputs[0]) == 2:
-            number = input("Buscando los TOP ?: ")
-            books = logic.get_best_books(control, int(number))
-            print_best_books(books)
+            books = logic.get_best_book(control)
+            print_best_book(books)
 
         elif int(inputs[0]) == 3:
             authorname = input("Nombre del autor a buscar: ")
