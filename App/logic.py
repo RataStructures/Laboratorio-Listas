@@ -28,6 +28,7 @@ import csv
 import os
 
 from DataStructures.List import array_list as lt
+
 data_dir = os.path.dirname(os.path.realpath("__file__")) + "/Data/"
 
 """
@@ -62,7 +63,7 @@ def load_data(catalog):
     books, authors = load_books(catalog)
     tags = load_tags(catalog)
     book_tags = load_books_tags(catalog)
-    return books, authors,tags, book_tags
+    return books, authors, tags, book_tags
 
 
 def load_books(catalog):
@@ -153,6 +154,7 @@ def count_books_by_tag(catalog, tag):
         if compare_tag_names(tag, book_tag) == 0:
             book_count += 1
     return book_count
+
 
 # Funciones para agregar informacion al catalogo
 

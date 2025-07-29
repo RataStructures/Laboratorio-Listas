@@ -38,7 +38,7 @@ def decrease_size(my_list):
 # Función extra (no documentada en la API) que permite iterar sobre los elementos de la lista
 
 
-def iterator(my_list,start,end, step):
+def iterator(my_list, start, end, step):
     current = get_first(my_list)
     index = 0
     while current is not None and index < end:
@@ -219,9 +219,9 @@ def insert_element(my_list, element, pos):
 
 
 def is_present(my_list, element, cmp_function):
-    result, index,n = -1, 0,size(my_list)
-    for current in iterator(my_list,0, n, 1):
-        are_equal = cmp_function(element,current) == 0
+    result, index, n = -1, 0, size(my_list)
+    for current in iterator(my_list, 0, n, 1):
+        are_equal = cmp_function(element, current) == 0
         if are_equal:
             result = index
             break
@@ -263,7 +263,7 @@ def sub_list(my_list, pos, num_elements):
         raise Exception("IndexError: list index out of range")
     else:
         sublist, index = new_list(), 0
-        for current in iterator(my_list,0, n, 1):
+        for current in iterator(my_list, 0, n, 1):
             if index >= pos and index < pos + num_elements:
                 sublist = add_last(sublist, current)
             if index == pos + num_elements:

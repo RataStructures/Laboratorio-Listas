@@ -2,7 +2,7 @@ import os
 
 
 def execute_pytest_test(test_name):
-    os.system(f"pytest -v -k \"{test_name}\"")
+    os.system(f'pytest -v -k "{test_name}"')
 
 
 def print_test_options():
@@ -34,8 +34,7 @@ if __name__ == "__main__":
     """
     runned = False
     print_test_options()
-    input_option = str(input(
-        "Ingrese el número de la opción que desea ejecutar: \n"))
+    input_option = str(input("Ingrese el número de la opción que desea ejecutar: \n"))
 
     if input_option == "1":
         execute_all_tests()

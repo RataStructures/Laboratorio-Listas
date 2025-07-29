@@ -75,41 +75,61 @@ def size(my_list):
 
 
 def first_element(my_list):
-    elements = get_elements(my_list)
-    first = elements[0]
+    if is_empty(my_list):
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        first = elements[0]
     return first
 
 
 def last_element(my_list):
-    elements = get_elements(my_list)
-    last = elements[-1]
+    if is_empty(my_list):
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        last = elements[-1]
     return last
 
 
 def get_element(my_list, pos):
-    elements = get_elements(my_list)
-    element = elements[pos]
+    n = size(my_list)
+    if pos < 0 or pos >= n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        element = elements[pos]
     return element
 
 
 def remove_first(my_list):
-    elements = get_elements(my_list)
-    first = elements.pop(0)
-    my_list = update_list(my_list, elements)
+    if is_empty(my_list):
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        first = elements.pop(0)
+        my_list = update_list(my_list, elements)
     return first
 
 
 def remove_last(my_list):
-    elements = get_elements(my_list)
-    last = elements.pop()
-    my_list = update_list(my_list, elements)
+    if is_empty(my_list):
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        last = elements.pop()
+        my_list = update_list(my_list, elements)
     return last
 
 
 def insert_element(my_list, element, pos):
-    elements = get_elements(my_list)
-    elements.insert(pos, element)
-    my_list = update_list(my_list, elements)
+    n = size(my_list)
+    if pos < 0 or pos > n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        elements.insert(pos, element)
+        my_list = update_list(my_list, elements)
     return my_list
 
 
@@ -117,7 +137,7 @@ def is_present(my_list, element, cmp_function):
     result, n = -1, size(my_list)
     for index in range(n):
         current = get_element(my_list, index)
-        are_equal = cmp_function(element,current) == 0
+        are_equal = cmp_function(element, current) == 0
         if are_equal:
             result = index
             break
@@ -125,29 +145,45 @@ def is_present(my_list, element, cmp_function):
 
 
 def delete_element(my_list, pos):
-    elements = get_elements(my_list)
-    del elements[pos]
-    my_list = update_list(my_list, elements)
+    n = size(my_list)
+    if pos < 0 or pos >= n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        del elements[pos]
+        my_list = update_list(my_list, elements)
     return my_list
 
 
 def change_info(my_list, pos, new_info):
-    elements = get_elements(my_list)
-    elements[pos] = new_info
-    my_list = update_list(my_list, elements)
+    n = size(my_list)
+    if pos < 0 or pos >= n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        elements[pos] = new_info
+        my_list = update_list(my_list, elements)
     return my_list
 
 
 def exchange(my_list, pos_1, pos_2):
-    elements = get_elements(my_list)
-    elements[pos_1], elements[pos_2] = elements[pos_2], elements[pos_1]
-    my_list = update_list(my_list, elements)
+    n = size(my_list)
+    if pos_1 < 0 or pos_1 >= n or pos_2 < 0 or pos_2 >= n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        elements[pos_1], elements[pos_2] = elements[pos_2], elements[pos_1]
+        my_list = update_list(my_list, elements)
     return my_list
 
 
 def sub_list(my_list, pos_i, num_elements):
-    elements = get_elements(my_list)
-    sub_elements = elements[pos_i : pos_i + num_elements]
-    my_sub_list = new_list()
-    my_sub_list = update_list(my_sub_list, sub_elements)
+    n = size(my_list)
+    if pos_i < 0 or pos_i >= n or num_elements < 0 or pos_i + num_elements > n:
+        raise Exception("IndexError: list index out of range")
+    else:
+        elements = get_elements(my_list)
+        sub_elements = elements[pos_i : pos_i + num_elements]
+        my_sub_list = new_list()
+        my_sub_list = update_list(my_sub_list, sub_elements)
     return my_sub_list
