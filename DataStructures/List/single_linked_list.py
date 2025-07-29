@@ -259,7 +259,7 @@ def exchange(my_list, pos_1, pos_2):
 
 def sub_list(my_list, pos, num_elements):
     n = size(my_list)
-    if pos < 0 or pos >= size(my_list) or num_elements < 0:
+    if pos < 0 or pos >= size(my_list) or num_elements < 0 or pos + num_elements > n:
         raise Exception("IndexError: list index out of range")
     else:
         sublist, index = new_list(), 0
