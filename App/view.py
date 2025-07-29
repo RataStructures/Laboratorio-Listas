@@ -1,28 +1,28 @@
 """
- * Copyright 2020, Departamento de sistemas y Computación, Universidad
- * de Los Andes
- *
- *
- * Desarrollado para el curso ISIS1225 - Estructuras de Datos y Algoritmos
- *
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along withthis program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Contribuciones
- *
- * Dario Correal
- """
+* Copyright 2020, Departamento de sistemas y Computación, Universidad
+* de Los Andes
+*
+*
+* Desarrollado para el curso ISIS1225 - Estructuras de Datos y Algoritmos
+*
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along withthis program.  If not, see <http://www.gnu.org/licenses/>.
+*
+* Contribuciones
+*
+* Dario Correal
+"""
 
 import sys
 import App.logic as logic
@@ -71,14 +71,14 @@ def print_author_data(author):
     la informacin solicitada.
     """
     if author:
-        print('Autor encontrado: ' + author['name'])
-        print('Promedio: ' + str(author['average_rating']))
-        print('Total de libros: ' + str(lt.size(author['books'])))
-        for book_pos in range(0, lt.size(author['books'])):
-            book = lt.get_element(author['books'], book_pos)
-            print('Titulo: ' + book['title'] + '  ISBN: ' + book['isbn'])
+        print("Autor encontrado: " + author["name"])
+        print("Promedio: " + str(author["average_rating"]))
+        print("Total de libros: " + str(lt.size(author["books"])))
+        for book_pos in range(0, lt.size(author["books"])):
+            book = lt.get_element(author["books"], book_pos)
+            print("Titulo: " + book["title"] + "  ISBN: " + book["isbn"])
     else:
-        print('No se encontro el autor')
+        print("No se encontro el autor")
 
 
 def print_best_book(book):
@@ -86,10 +86,16 @@ def print_best_book(book):
     Imprime el mejor libro pasado por parametro
     """
     if book:
-        print('Titulo: ' + book['title'] + '  ISBN: ' +
-              book['isbn'] + ' Rating: ' + book['average_rating'])
+        print(
+            "Titulo: "
+            + book["title"]
+            + "  ISBN: "
+            + book["isbn"]
+            + " Rating: "
+            + book["average_rating"]
+        )
     else:
-        print('No se encontraron libros')
+        print("No se encontraron libros")
 
 
 # Se crea el controlador asociado a la vista
@@ -105,15 +111,14 @@ def main():
     # ciclo del menu
     while working:
         print_menu()
-        inputs = input('Seleccione una opción para continuar\n')
+        inputs = input("Seleccione una opción para continuar\n")
         if int(inputs[0]) == 1:
             print("Cargando información de los archivos ....")
             bk, at, tg, bktg = load_data(control)
-            print('Libros cargados: ' + str(bk))
-            print('Autores cargados: ' + str(at))
-            print('Géneros cargados: ' + str(tg))
-            print('Asociación de Géneros a Libros cargados: ' +
-                  str(bktg))
+            print("Libros cargados: " + str(bk))
+            print("Autores cargados: " + str(at))
+            print("Géneros cargados: " + str(tg))
+            print("Asociación de Géneros a Libros cargados: " + str(bktg))
 
         elif int(inputs[0]) == 2:
             books = logic.get_best_book(control)
@@ -127,7 +132,7 @@ def main():
         elif int(inputs[0]) == 4:
             label = input("Etiqueta a buscar: ")
             book_count = logic.count_books_by_tag(control, label)
-            print('Se encontraron: ', book_count, ' Libros')
+            print("Se encontraron: ", book_count, " Libros")
 
         elif int(inputs[0]) == 0:
             working = False
