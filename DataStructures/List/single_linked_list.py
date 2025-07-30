@@ -35,18 +35,42 @@ def decrease_size(my_list):
     return my_list
 
 
+def update_size(my_list, size):
+    my_list["size"] = size
+    return my_list
+
+
+def update_list(my_list, new_list):
+    my_list = update_first(my_list, get_first(new_list))
+    my_list = update_last(my_list, get_last(new_list))
+    my_list = update_size(my_list, size(new_list))
+    return my_list
+
+
+def iterator_node(my_list, start, end, step):
+    first_node = get_first(my_list)
+    current_node = ln.get_node(first_node, start)
+    index = start
+    while current_node is not None and index < end:
+        if index >= start and (index - start) % step == 0:
+            yield current_node
+        index += step
+        current_node = ln.get_node(current_node, step)
+
+
 # Función extra (no documentada en la API) que permite iterar sobre los elementos de la lista
 
 
 def iterator(my_list, start, end, step):
-    current = get_first(my_list)
-    index = 0
-    while current is not None and index < end:
+    first_node = get_first(my_list)
+    current_node = ln.get_node(first_node, start)
+    index = start
+    while current_node is not None and index < end:
         if index >= start and (index - start) % step == 0:
-            result = ln.get_element(current)
-            yield result
-        index += 1
-        current = ln.get_next(current)
+            current_value = ln.get_element(current_node)
+            yield current_value
+        index += step
+        current_node = ln.get_node(current_node, step)
 
 
 # Funciones principales de la API

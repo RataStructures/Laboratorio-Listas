@@ -127,9 +127,14 @@ def insert_element(my_list, element, pos):
     if pos < 0 or pos > n:
         raise Exception("IndexError: list index out of range")
     else:
-        elements = get_elements(my_list)
-        elements.insert(pos, element)
-        my_list = update_list(my_list, elements)
+        if pos == 0:
+            my_list = add_first(my_list, element)
+        elif pos == n:
+            my_list = add_last(my_list, element)
+        else:
+            elements = get_elements(my_list)
+            elements.insert(pos, element)
+            my_list = update_list(my_list, elements)
     return my_list
 
 
